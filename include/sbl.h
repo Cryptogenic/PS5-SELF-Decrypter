@@ -59,10 +59,10 @@ void init_sbl(
     uint64_t mailbox_mtx_offset
 );
 
-int _sceSblServiceRequest(int sock, struct sbl_msg_header *msg_header, char *in_buf, char *out_buf, int request_type);
-int sceSblDriverSendMsgAnytime(int sock, struct sbl_msg_header *msg_header, char *in_buf, char *out_buf);
-int sceSblDriverSendMsgPol(int sock, struct sbl_msg_header *msg_header, char *in_buf, char *out_buf);
-int sceSblServiceRequest(int sock, struct sbl_msg_header *msg_header, char *in_buf, char *out_buf);
-int sceSblDriverSendMsg(int sock, struct sbl_msg_header *msg_header, char *in_buf);
+int _sceSblServiceRequest(int sock, struct sbl_msg_header *msg_header, void *in_buf, void *out_buf, int request_type);
+int sceSblDriverSendMsgAnytime(int sock, struct sbl_msg_header *msg_header, void *in_buf, void *out_buf);
+int sceSblDriverSendMsgPol(int sock, struct sbl_msg_header *msg_header, void *in_buf, void *out_buf);
+int sceSblServiceRequest(int sock, struct sbl_msg_header *msg_header, void *in_buf, void *out_buf);
+int sceSblDriverSendMsg(int sock, struct sbl_msg_header *msg_header, void *in_buf);
 
 #endif

@@ -2,6 +2,7 @@
 #define AUTHMGR_H
 
 #include <sys/types.h>
+#include "self.h"
 
 #define __ALIGN_KERNEL_MASK(x, mask)	(((x) + (mask)) & ~(mask))
 #define __ALIGN_KERNEL(x, a)		__ALIGN_KERNEL_MASK(x, (typeof(x))(a) - 1)
