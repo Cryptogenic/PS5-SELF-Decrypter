@@ -1,0 +1,38 @@
+name: Build payload
+
+on: [ push, pull_request, workflow_dispatch ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Setup environment
+      run: |
+        echo "PS5SDK=${{ github.workspace }}/ps5sdk" >> $GITHUB_ENV
+        sudo apt install ninja-build
+
+    - name: Show Clang version
+      run: clang -v
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Checkout PS5SDK
+      uses: actions/checkout@v3
+      with:
+        repository: PS5Dev/PS5SDK
+        path: ${{ env.PS5SDK }}
+
+    - name: Build SDK
+      working-directory: ${{ env.PS5SDK }}
+      run: bash ./build.sh
+
+    - name: Build elf
+      run: bash ./build.sh
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: self_decrypter
+        path: bin/self_decrypter.elf
