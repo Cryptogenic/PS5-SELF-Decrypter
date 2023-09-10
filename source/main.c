@@ -587,11 +587,11 @@ void dump_dir(int sock, uint64_t authmgr_handle, struct tailored_offsets *offset
             out_fd = _open(out_file_path, O_RDONLY, 0);
             if (out_fd >= 0) {
                 _fstat(out_fd, &out_file_stat);
+                _close(out_fd);
                 if (out_file_stat.st_size > 0) {
                     entry = (struct dirent *) ((char *) entry + entry->d_reclen);
                     continue;
                 }
-                _close(out_fd);
             }
 
 //            for (int i = 0; i < 0x100; i++) {
