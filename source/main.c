@@ -56,7 +56,7 @@ void *bump_alloc(uint64_t len)
     g_bump_allocator_cur += len;
 
     // Zero init to avoid stupid bugs
-    memset(ptr, 0, len);
+    (void)memset(ptr, 0, len);
 
     return ptr;
 }

@@ -51,7 +51,6 @@ int _sceSblAuthMgrVerifyHeader(int sock, int authmgr_handle, uint64_t header_pa,
 
 int _sceSblAuthMgrSmLoadSelfSegment(int sock, int authmgr_handle, int service_id, uint64_t chunk_table_pa, uint32_t segment_index)
 {
-    int err;
     struct sbl_msg_header msg = {};
     struct sbl_authmgr_load_segment load = {};
 
