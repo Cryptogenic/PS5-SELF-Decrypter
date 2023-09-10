@@ -187,7 +187,13 @@ struct self_block_segment *self_decrypt_segment(
     kernel_copyin(chunk_table, chunk_table_va, 0x30);
 
     // Request segment decryption
-    err = _sceSblAuthMgrSmLoadSelfSegment(sock, authmgr_handle, service_id, chunk_table_pa, segment_idx);
+    for (int tries = 0; tries < 3; tries++) {
+        err = _sceSblAuthMgrSmLoadSelfSegment(sock, authmgr_handle, service_id, chunk_table_pa, segment_idx);
+        if (err == 0)
+            break;
+        sceKernelSleep(1);
+    }
+
     if (err != 0)
         return NULL;
 
@@ -270,17 +276,23 @@ void *self_decrypt_block(
     }
 
     // Request segment decryption
-    err = _sceSblAuthMgrSmLoadSelfBlock(
-        sock,
-        authmgr_handle,
-        service_id,
-        data_blob_pa,
-        data_out_pa,
-        segment,
-        SELF_SEGMENT_ID(segment),
-        block_segment,
-        block_idx
-    );
+    for (int tries = 0; tries < 3; tries++) {
+        err = _sceSblAuthMgrSmLoadSelfBlock(
+            sock,
+            authmgr_handle,
+            service_id,
+            data_blob_pa,
+            data_out_pa,
+            segment,
+            SELF_SEGMENT_ID(segment),
+            block_segment,
+            block_idx
+        );
+        if (err == 0)
+            break;
+        sceKernelSleep(1);
+    }
+
     if (err != 0)
         return NULL;
 
