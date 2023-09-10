@@ -26,21 +26,19 @@ plaintext ELFs to USB drive.
 [+] kernel .data base is ffffffff88e40000, pipe 12->13, rw pair 14->21, pipe addr is ffffa04b61800480
 [+] firmware version 0x3000038 ( 3.000.038)
 [+] got auth manager: 4
-[?] dirfd = 17
-[?] dirfd = 17
-[?] dirfd = 17
-[?] dirfd = 17
-[?] dirfd = 17
-[?] dirfd = 17
-[+] dumping /...
-[+] decrypting //decid_update.elf...
-  [?] file segments are irregular, falling back on last LOAD segment
+...
+[+] dumping /system_ex/common_ex/lib...
+[+] decrypting /system_ex/common_ex/lib/libSceJsc.sprx...
   [?] decrypting block info segment for 0
   [?] decrypting block info segment for 1
   [?] decrypting block info segment for 2
-  [?] decrypting segment=1, block=0
-  [?] decrypting segment=1, block=1
-...
+  [?] decrypting block info segment for 4
+  [?] decrypting block info segment for 9
+  [?] decrypting block info segment for 10
+  [?] decrypting segment=1, block=1/593
+  [?] decrypting segment=1, block=2/593
+  [?] decrypting segment=1, block=3/593
+  [?] decrypting segment=1, block=4/593
 ```
 
 ## Notes for offset porting
