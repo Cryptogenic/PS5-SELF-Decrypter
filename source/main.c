@@ -715,6 +715,7 @@ int payload_main(struct payload_args *args)
         offsets.offset_datacave_1     = 0x4270000;
         offsets.offset_datacave_2     = 0x4280000;
         break;
+    case 0x4000000:
     case 0x4030000:
     case 0x4500005:
     case 0x4510001:
